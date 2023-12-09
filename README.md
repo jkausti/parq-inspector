@@ -6,6 +6,10 @@ ParqInspector is a Parquet viewer for your terminal, built with [Textual](https:
 ParqInspector can open local or remote Parquet files and lets you view their contents in a table format.
 
 
+https://github.com/jkausti/parq-inspector/assets/19781820/7ef7657a-0598-4d3e-bab8-3faa8032ff70
+
+
+
 👉 Installation
 ------------
 
