@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "parq-inspector"
 version = "0.1.0"
-description = ""
+description = "Parquet viewer for your terminal."
 authors = ["John Kaustinen <jokausti@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/jkausti/parq-inspector"
 readme = "README.md"
 packages = [{ include = "inspector" }]
 
