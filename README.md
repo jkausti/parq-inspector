@@ -70,7 +70,8 @@ url-variants are determined by what polars supports. See more [here](https://pol
 👉 Roadmap
 ------------
 
-[✓] - Reading single Parquet files<br>
+[✓] - reading local single Parquet files<br>
+[✓] - reading remote single Parquet files<br>
 [] - Reading Parquet datasets<br>
 [] - Reading Delta tables<br>
 

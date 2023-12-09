@@ -12,14 +12,12 @@ textual = "^0.42.0"
 rich-click = "^1.7.1"
 polars = "^0.19.15"
 
-
 [tool.poetry.group.dev.dependencies]
 textual-dev = "^1.2.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
 
 [tool.pyright]
 exclude = ".venv"
