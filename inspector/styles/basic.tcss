@@ -1,0 +1,91 @@
+/* Screen { */
+/*     height: auto; */
+/* } */
+
+Screen {
+    layers: base overlay;
+}
+
+Header {
+    layer: base; 
+}
+
+Footer {
+    layer: base;
+}
+
+DataTable {
+    height: 100%;
+    width: 100%;
+    layer: base;
+}
+
+
+Horizontal {
+    width: 100%;
+}
+
+Sidebar {
+    dock: bottom;
+    offset-y: -1;
+    width: 100%;
+    height: 23;
+    background: darkslategrey;
+    border: solid;
+    layer: overlay;
+}
+
+Sidebar .sidebar-title {
+    text-align: center;
+    text-style: bold;
+    align: center middle;
+}
+
+Sidebar.-hidden {
+    offset-x: -100%;
+}
+
+StoragePickerGroup {
+    height: auto;
+    margin: 2 3;
+    text-align: left;
+    width: auto;
+}
+
+.storage-type-title {
+    margin: 1;
+}
+
+
+RowLimitSetter {
+    text-align: center;
+    margin: 2 3;
+    padding: 1;
+    width: 25;
+    height: auto;
+}
+
+.row_limit_label {
+    margin: 1;
+}
+
+PathSetter {
+    text-align: center;
+    margin: 2 3;
+    padding: 1;
+}
+
+.path_label {
+    margin: 1;
+}
+
+#button_cont {
+    height: auto;
+    width: 100%;
+    align: center middle;
+}
+
+#submit_button {
+    margin: 2;
+    width: 50%;
+}
