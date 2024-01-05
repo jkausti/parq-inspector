@@ -79,7 +79,9 @@ class TableApp(App):
 
     @on(Button.Pressed)
     def show_data(self) -> None:
-        radio_set = self.query_one(RadioSet)
+        radio_set = self.query_one("#filetype_set")
+        if not isinstance(radio_set, RadioSet):
+            raise Exception("Could not get radioset from ui")
         if radio_set.pressed_button:
             storage_value = radio_set.pressed_button.label
         else:

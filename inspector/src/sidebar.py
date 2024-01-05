@@ -11,13 +11,17 @@ from pathlib import Path
 
 
 class StoragePickerGroup(Container):
+    def __init__(self):
+        super().__init__()
+
     def compose(self) -> ComposeResult:
-        yield Label("Storage type", classes="storage-type-title")
-        with RadioSet():
-            yield RadioButton("Local")
-            yield RadioButton("Azure")
-            yield RadioButton("AWS")
-            yield RadioButton("GCP")
+        with Vertical():
+            yield Label("Storage type", classes="storage-type-title")
+            with RadioSet(id="storagetype_set"):
+                yield RadioButton("Local")
+                yield RadioButton("Azure")
+                yield RadioButton("AWS")
+                yield RadioButton("GCP")
 
 
 class RowLimitSetter(Container):
@@ -44,6 +48,17 @@ class PathSetter(Container):
         yield Input(id="path_input", value=self.placeholder)
 
 
+class FileTypeSetter(Container):
+    def __init__(self):
+        super().__init__()
+
+    def compose(self) -> ComposeResult:
+        yield Label("Filetype", classes="filetype-title")
+        with RadioSet(id="filetype_set"):
+            yield RadioButton("Parquet")
+            yield RadioButton("Delta table")
+
+
 class Sidebar(Container):
     def __init__(self, filepath: Path, row_limit: int):
         self.path_placeholder = str(filepath) if str(filepath) != "." else ""
@@ -53,11 +68,11 @@ class Sidebar(Container):
     def compose(self) -> ComposeResult:
         with Vertical():
             yield Label("Settings", classes="sidebar-title")
-            with Horizontal():
+            with Horizontal(id="upper_row"):
                 yield StoragePickerGroup()
                 yield RowLimitSetter(self.row_limit)
                 yield PathSetter(str(self.path_placeholder))
-            yield Container(
-                Button("Show data", id="submit_button", variant="primary"),
-                id="button_cont",
-            )
+            with Horizontal(id="lower_row"):
+                yield Button("Show data", id="submit_button", variant="primary")
+                yield FileTypeSetter()
+            # id="button_cont",

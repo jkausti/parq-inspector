@@ -13,6 +13,7 @@ python = "^3.8"
 textual = "^0.42.0"
 rich-click = "^1.7.1"
 polars = "^0.19.15"
+deltalake = "^0.15.0"
 
 [tool.poetry.group.dev.dependencies]
 textual-dev = "^1.2.1"
