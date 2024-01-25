@@ -79,7 +79,8 @@ class TableApp(App):
 
     @on(Button.Pressed)
     def show_data(self) -> None:
-        radio_set = self.query_one("#filetype_set")
+        # get values from ui
+        radio_set = self.query_one("#storagetype_set")
         if not isinstance(radio_set, RadioSet):
             raise Exception("Could not get radioset from ui")
         if radio_set.pressed_button:
@@ -100,10 +101,19 @@ class TableApp(App):
         else:
             raise Exception("No path set")
 
+        file_type = self.query_one("#filetype_set")
+        if not isinstance(file_type, RadioSet):
+            raise Exception("Could not get filetype from ui.")
+        if file_type.pressed_button:
+            filetype_value = file_type.pressed_button.label
+        else:
+            raise Exception("No value set for filetype")
+
         input_args = {
-            "storage": storage_value,
+            "storage": str(storage_value),
             "row_limit": row_limit,
             "path": path,
+            "filetype": str(filetype_value),
         }
         print(f"INPUT_ARGS: {input_args}")
 
