@@ -24,6 +24,7 @@ class ParqTable(DataTable):
                     lf = pl.scan_parquet(str(path))
                 except Exception as e:
                     raise e
+
             else:
                 raise Exception("Wrong filetype value in input_args")
                 # TODO handle exception and show error on screen
@@ -36,7 +37,7 @@ class ParqTable(DataTable):
                     lf = pl.read_delta(
                         source=str(input_args["path"]),
                         storage_options=storage_options,
-                    )
+                    ).lazy()
                 except Exception as e:
                     raise e
             elif input_args["filetype"] == "Parquet":
