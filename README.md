@@ -4,6 +4,7 @@ ParqInspector
 ParqInspector is a Parquet viewer for your terminal, built with [Textual](https://github.com/Textualize/textual).
 
 ParqInspector can open local or remote Parquet files and lets you view their contents in a table format.
+ParqInspector can since version 2.0 also open Delta tables.
 
 
 https://github.com/jkausti/parq-inspector/assets/19781820/7ef7657a-0598-4d3e-bab8-3faa8032ff70
@@ -77,7 +78,7 @@ url-variants are determined by what polars supports. See more [here](https://pol
 [✓] - reading local single Parquet files<br>
 [✓] - reading remote single Parquet files<br>
 [] - Reading Parquet datasets<br>
-[] - Reading Delta tables<br>
+[✓] - Reading Delta tables<br>
 
 ---
 
