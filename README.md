@@ -1,11 +1,9 @@
 ParqInspector
 ================
 
-ParqInspector is a Parquet viewer for your terminal, built with [Textual](https://github.com/Textualize/textual).
+ParqInspector is a Parquet- and Deltatable viewer for your terminal, built with [Textual](https://github.com/Textualize/textual).
 
-ParqInspector can open local or remote Parquet files and lets you view their contents in a table format.
-ParqInspector can since version 2.0 also open Delta tables.
-
+ParqInspector can open local or remote Parquet files and delta-tables and lets you view their contents in a table format.
 
 https://github.com/jkausti/parq-inspector/assets/19781820/7ef7657a-0598-4d3e-bab8-3faa8032ff70
 
@@ -69,8 +67,8 @@ need to be set.
 Remote files can only be opened through the Settings-pane in the UI.
 Pick the correct cloud provider and in the Path-field, you simply put the URL to your file instead of a local path.
 ParqInspector uses [polars](https://github.com/pola-rs/polars) under the hood 
-to read Parquet files from remote storage, and the supported protocols and
-url-variants are determined by what polars supports. See more [here](https://pola-rs.github.io/polars/py-polars/html/reference/api/polars.scan_parquet.html).
+to read Parquet files and Delta-tales from remote storage, and the supported protocols and
+url-variants are determined by what polars supports. See more [here](https://docs.pola.rs/py-polars/html/reference/index.html).
 
 👉 Roadmap
 ------------
