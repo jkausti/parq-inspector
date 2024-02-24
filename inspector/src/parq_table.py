@@ -1,3 +1,4 @@
+from numpy import source
 from textual.events import InputEvent
 from textual.widgets import DataTable
 import polars as pl
@@ -13,24 +14,43 @@ class ParqTable(DataTable):
         self.add_rows(data[1])
 
     def get_and_set_data(self, input_args: dict) -> None:
-        if str(input_args["storage"]).lower() == "local":
+        if input_args["storage"].lower() == "local":
             path = Path(input_args["path"]).resolve()
-            try:
-                lf = pl.scan_parquet(str(path))
-            except Exception as e:
-                raise e
+
+            if input_args["filetype"] == "Delta table":
+                lf = pl.read_delta(source=str(path)).lazy()
+            elif input_args["filetype"] == "Parquet":
+                try:
+                    lf = pl.scan_parquet(str(path))
+                except Exception as e:
+                    raise e
+
+            else:
+                raise Exception("Wrong filetype value in input_args")
                 # TODO handle exception and show error on screen
 
-        elif str(input_args["storage"]).lower() in ["azure", "gcp", "aws"]:
+        elif input_args["storage"].lower() in ["azure", "gcp", "aws"]:
             storage_options = get_storage_options(str(input_args["storage"]).lower())
-            try:
-                lf = pl.scan_parquet(
-                    str(input_args["path"]),
-                    storage_options=storage_options,
-                )
-            except Exception as e:
-                raise e
-                # TODO handle exception
+
+            if input_args["filetype"] == "Delta table":
+                try:
+                    lf = pl.read_delta(
+                        source=str(input_args["path"]),
+                        storage_options=storage_options,
+                    ).lazy()
+                except Exception as e:
+                    raise e
+            elif input_args["filetype"] == "Parquet":
+                try:
+                    lf = pl.scan_parquet(
+                        str(input_args["path"]),
+                        storage_options=storage_options,
+                    )
+                except Exception as e:
+                    raise e
+                    # TODO handle exception
+            else:
+                raise Exception("Wrong filetype value in input_args")
         else:
             raise NotImplementedError
 

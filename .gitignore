@@ -110,3 +110,6 @@ data/
 
 # git
 .git/
+
+# project stuff
+.prepare_data/

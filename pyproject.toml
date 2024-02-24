@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "parq-inspector"
-version = "0.1.0"
+version = "0.2.0"
 description = "Parquet viewer for your terminal."
 authors = ["John Kaustinen <jokausti@gmail.com>"]
 license = "MIT"
@@ -13,6 +13,8 @@ python = "^3.8"
 textual = "^0.42.0"
 rich-click = "^1.7.1"
 polars = "^0.19.15"
+deltalake = "^0.15.0"
+adlfs = "^2024.2.0"
 
 [tool.poetry.group.dev.dependencies]
 textual-dev = "^1.2.1"
@@ -22,7 +24,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pyright]
-exclude = ".venv"
+exclude = [".venv"]
 venvPath = "."
 venv = ".venv"
 
